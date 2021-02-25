@@ -41,6 +41,5 @@ namespace CapaDatos
             this.aCodigo_Postal        = pCodigo_Postal;
             this.aNum_Seguridad_Social = pNum_Seguridad_Social;
         }
-    } //pruebaghdghgddhgnsdgnsnfsnsfx
-    /////hfgsijahgisahighighihgihgihgbfhbahbvshbvaflsbvaslbvasjlbvlsbfanbvksbvsbkzv
+    } 
 }
