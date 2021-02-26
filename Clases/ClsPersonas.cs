@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaDatos
+
+namespace CapaDatos.Clases
 {
-    public class ClsPersonas
+    public class ClsPersonas : ClsConexion
     {
         public String aNif;
         public String aNombre_Completo;
@@ -41,5 +44,75 @@ namespace CapaDatos
             this.aCodigo_Postal        = pCodigo_Postal;
             this.aNum_Seguridad_Social = pNum_Seguridad_Social;
         }
+
+        public String MantenimientoPersona(ClsPersonas pClspersona, String pAccion)
+        {
+            String vResultado = "";
+            if (this.Conectando())
+            {
+                try
+                {
+                    SqlConnection conectado = new SqlConnection(this.conexion);
+                    conectado.Open();
+                    SqlCommand coneccion = new SqlCommand();
+                    coneccion.Connection = conectado;
+                    coneccion.CommandType = CommandType.StoredProcedure;
+                    coneccion.CommandText = "stp_MantenimientoPersonas"; 
+                    coneccion.CommandTimeout = 10;
+                    coneccion.Parameters.AddWithValue("@pNif", pClspersona.aNif);
+                    coneccion.Parameters.AddWithValue("@pNombre_Completo", pClspersona.aNombre_Completo);
+                    coneccion.Parameters.AddWithValue("@pDireccion", pClspersona.aDireccion);
+                    coneccion.Parameters.AddWithValue("@pTelefono", pClspersona.aTelefono);
+                    coneccion.Parameters.AddWithValue("@pPoblacion", pClspersona.aPoblacion);
+                    coneccion.Parameters.AddWithValue("@pProvincia", pClspersona.aProvincia);
+                    coneccion.Parameters.AddWithValue("@pCodigo_Postal", pClspersona.aCodigo_Postal);
+                    coneccion.Parameters.AddWithValue("@pNum_seguridad_Social", pClspersona.aNum_Seguridad_Social);
+                    coneccion.Parameters.AddWithValue("@pAccion", pAccion);
+                    coneccion.ExecuteNonQuery();
+                    conectado.Close();
+                    vResultado = "Ejecutado con exito";
+
+                }
+                catch (Exception Ex)
+                {
+                    vResultado = Ex.Message;
+                }
+            }
+            return vResultado;
+        }
+
+        private DataSet dataTable = new DataSet();
+        public DataSet GetListaPersonas(ClsPersonas pClspersona, String pAccion)
+        {
+            try
+            {
+                SqlDataAdapter adapter;
+                DataSet ds = new DataSet();
+                SqlConnection conectado = new SqlConnection(this.conexion);
+                conectado.Open();
+                SqlCommand coneccion = new SqlCommand();
+                coneccion.Connection = conectado;
+                coneccion.CommandType = CommandType.StoredProcedure;
+                coneccion.CommandText = "Stp_MantenimientoPersonas";
+                coneccion.Parameters.AddWithValue("@pNif", pClspersona.aNif);
+                coneccion.Parameters.AddWithValue("@pNombre_Completo", pClspersona.aNombre_Completo);
+                coneccion.Parameters.AddWithValue("@pDireccion", pClspersona.aDireccion);
+                coneccion.Parameters.AddWithValue("@pTelefono", pClspersona.aTelefono);
+                coneccion.Parameters.AddWithValue("@pPoblacion", pClspersona.aPoblacion);
+                coneccion.Parameters.AddWithValue("@pProvincia", pClspersona.aProvincia);
+                coneccion.Parameters.AddWithValue("@pCodigo_Postal", pClspersona.aCodigo_Postal);
+                coneccion.Parameters.AddWithValue("@pNum_seguridad_Social", pClspersona.aNum_Seguridad_Social);
+                coneccion.Parameters.AddWithValue("@pAccion", pAccion);
+                adapter = new SqlDataAdapter(coneccion);
+                adapter.Fill(dataTable);
+                conectado.Close();
+            }
+            catch (Exception Ex)
+            {
+                Console.WriteLine(Ex.Message);
+            }
+            return dataTable;
+        }
     }
 }
+
