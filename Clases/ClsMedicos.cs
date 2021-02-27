@@ -69,7 +69,7 @@ namespace CapaDatos.Clases
         }
 
         private DataSet dataTable = new DataSet();
-        public DataSet GetListaPersonas(ClsMedicos pClsmedico, String pAccion)
+        public DataSet GetListaMedicos(ClsMedicos pClsmedico, String pAccion)
         {
             try
             {
