@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CapaDatos.Clases
 {
-    class ClsMedicos : ClsConexion
+    public class ClsMedicos : ClsConexion
     {
         public String   aNif_Medico;
         public DateTime aFecha_Alta;
