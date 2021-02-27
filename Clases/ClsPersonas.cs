@@ -17,7 +17,7 @@ namespace CapaDatos.Clases
         public String aTelefono;
         public String aPoblacion;
         public String aProvincia;
-        public int    aCodigo_Postal;
+        public String aCodigo_Postal;
         public String aNum_Seguridad_Social;
 
         public ClsPersonas()
@@ -28,12 +28,12 @@ namespace CapaDatos.Clases
             this.aTelefono             = "";
             this.aPoblacion            = "";
             this.aProvincia            = "";
-            this.aCodigo_Postal        = 0;
+            this.aCodigo_Postal        = "";
             this.aNum_Seguridad_Social = "";
             
         }
 
-        public ClsPersonas(string pNif, String pNombre_Completo, String pDireccion, String pTelefono, String pPoblacion, String pProvincia, int pCodigo_Postal, String pNum_Seguridad_Social )
+        public ClsPersonas(string pNif, String pNombre_Completo, String pDireccion, String pTelefono, String pPoblacion, String pProvincia, String pCodigo_Postal, String pNum_Seguridad_Social )
         {
             this.aNif                  = pNif;
             this.aNombre_Completo      = pNombre_Completo;
