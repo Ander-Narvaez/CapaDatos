@@ -10,19 +10,22 @@ namespace CapaDatos.Clases
 {
     public class ClsHorarios : ClsConexion
     {
+        public String aCodigoH;
         public String aDia;
         public String aJornada;
         public String aMedico;
 
         public ClsHorarios()
         {
+            this.aCodigoH = "";
             this.aDia     = "";
             this.aJornada = "";
             this.aMedico  = "";
         }
 
-        public ClsHorarios(string pDia, String pJornada, String pMedico)
+        public ClsHorarios(string paCodigoH, String pDia, String pJornada, String pMedico)
         {
+            this.aCodigoH = paCodigoH;
             this.aDia     = pDia;
             this.aJornada = pJornada;
             this.aMedico  = pMedico;
@@ -40,8 +43,9 @@ namespace CapaDatos.Clases
                     SqlCommand coneccion = new SqlCommand();
                     coneccion.Connection = conectado;
                     coneccion.CommandType = CommandType.StoredProcedure;
-                    coneccion.CommandText = "stp_MantenimientoHorarios";
+                    coneccion.CommandText = "Stp_MantenimientoHorarios";
                     coneccion.CommandTimeout = 10;
+                    coneccion.Parameters.AddWithValue("@pCodigoH",pClshorarios.aCodigoH);
                     coneccion.Parameters.AddWithValue("@pDia", pClshorarios.aDia);
                     coneccion.Parameters.AddWithValue("@pJornada", pClshorarios.aJornada);
                     coneccion.Parameters.AddWithValue("@pMedico", pClshorarios.aMedico);
@@ -72,6 +76,7 @@ namespace CapaDatos.Clases
                 coneccion.Connection = conectado;
                 coneccion.CommandType = CommandType.StoredProcedure;
                 coneccion.CommandText = "Stp_MantenimientoHorarios";
+                coneccion.Parameters.AddWithValue("@pCodigoH", pClshorarios.aCodigoH);
                 coneccion.Parameters.AddWithValue("@pDia", pClshorarios.aDia);
                 coneccion.Parameters.AddWithValue("@pJornada", pClshorarios.aJornada);
                 coneccion.Parameters.AddWithValue("@pMedico", pClshorarios.aMedico);
