@@ -8,30 +8,21 @@ using System.Threading.Tasks;
 
 namespace CapaDatos.Clases
 {
-    public class ClsHorarios : ClsConexion
+    public class ClsVacaciones : ClsConexion
     {
-        public String aCodigoH;
-        public String aDia;
-        public String aJornada;
         public String aMedico;
 
-        public ClsHorarios()
+        public ClsVacaciones()
         {
-            this.aCodigoH = "";
-            this.aDia     = "";
-            this.aJornada = "";
-            this.aMedico  = "";
+            this.aMedico = "";
         }
 
-        public ClsHorarios(string pCodigoH, String pDia, String pJornada, String pMedico)
+        public ClsVacaciones(string pMedico)
         {
-            this.aCodigoH = pCodigoH;
-            this.aDia     = pDia;
-            this.aJornada = pJornada;
-            this.aMedico  = pMedico;
+            this.aMedico = pMedico;
         }
 
-        public String MantenimientoHorarios(ClsHorarios pClshorarios, String pAccion)
+        public String MantenimientoVacaciones(ClsVacaciones pClsvacaciones, String pAccion)
         {
             String vResultado = "";
             if (this.Conectando())
@@ -43,12 +34,9 @@ namespace CapaDatos.Clases
                     SqlCommand coneccion = new SqlCommand();
                     coneccion.Connection = conectado;
                     coneccion.CommandType = CommandType.StoredProcedure;
-                    coneccion.CommandText = "Stp_MantenimientoHorarios";
+                    coneccion.CommandText = "Stp_MantenimientoVacaciones";
                     coneccion.CommandTimeout = 10;
-                    coneccion.Parameters.AddWithValue("@pCODIGO_HORARIOS",pClshorarios.aCodigoH);
-                    coneccion.Parameters.AddWithValue("@pDIA", pClshorarios.aDia);
-                    coneccion.Parameters.AddWithValue("@pJORNADA", pClshorarios.aJornada);
-                    coneccion.Parameters.AddWithValue("@pMEDICO", pClshorarios.aMedico);
+                    coneccion.Parameters.AddWithValue("@EMPLEADO", pClsvacaciones.aMedico);
                     coneccion.Parameters.AddWithValue("@pAccion", pAccion);
                     coneccion.ExecuteNonQuery();
                     conectado.Close();
@@ -64,7 +52,7 @@ namespace CapaDatos.Clases
         }
 
         private DataSet dataTable = new DataSet();
-        public DataSet GetListaHorarios(ClsHorarios pClshorarios, String pAccion)
+        public DataSet GetListaVacaciones(ClsVacaciones pClsvacaciones, String pAccion)
         {
             try
             {
@@ -75,11 +63,8 @@ namespace CapaDatos.Clases
                 SqlCommand coneccion = new SqlCommand();
                 coneccion.Connection = conectado;
                 coneccion.CommandType = CommandType.StoredProcedure;
-                coneccion.CommandText = "Stp_MantenimientoHorarios";
-                coneccion.Parameters.AddWithValue("@pCODIGO_HORARIOS", pClshorarios.aCodigoH);
-                coneccion.Parameters.AddWithValue("@pDIA", pClshorarios.aDia);
-                coneccion.Parameters.AddWithValue("@pJORNADA", pClshorarios.aJornada);
-                coneccion.Parameters.AddWithValue("@pMEDICO", pClshorarios.aMedico);
+                coneccion.CommandText = "Stp_MantenimientoVacaciones";
+                coneccion.Parameters.AddWithValue("@EMPLEADO", pClsvacaciones.aMedico);
                 coneccion.Parameters.AddWithValue("@pAccion", pAccion);
                 adapter = new SqlDataAdapter(coneccion);
                 adapter.Fill(dataTable);

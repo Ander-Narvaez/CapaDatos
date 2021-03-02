@@ -47,6 +47,7 @@
     <Compile Include="Clases\ClsMedicos.cs" />
     <Compile Include="Clases\ClsPacientes.cs" />
     <Compile Include="Clases\ClsPersonas.cs" />
+    <Compile Include="Clases\ClsVacaciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
