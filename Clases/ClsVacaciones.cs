@@ -64,7 +64,7 @@ namespace CapaDatos.Clases
                 coneccion.Connection = conectado;
                 coneccion.CommandType = CommandType.StoredProcedure;
                 coneccion.CommandText = "Stp_MantenimientoVacaciones";
-                coneccion.Parameters.AddWithValue("@EMPLEADO", pClsvacaciones.aMedico);
+                coneccion.Parameters.AddWithValue("@pEMPLEADO", pClsvacaciones.aMedico);
                 coneccion.Parameters.AddWithValue("@pAccion", pAccion);
                 adapter = new SqlDataAdapter(coneccion);
                 adapter.Fill(dataTable);
