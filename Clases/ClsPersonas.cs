@@ -57,7 +57,7 @@ namespace CapaDatos.Clases
                     SqlCommand coneccion = new SqlCommand();
                     coneccion.Connection = conectado;
                     coneccion.CommandType = CommandType.StoredProcedure;
-                    coneccion.CommandText = "stp_MantenimientoPersonas"; 
+                    coneccion.CommandText = "Stp_MantenimientoPersonas"; 
                     coneccion.CommandTimeout = 10;
                     coneccion.Parameters.AddWithValue("@pNif", pClspersona.aNif);
                     coneccion.Parameters.AddWithValue("@pNombre_Completo", pClspersona.aNombre_Completo);
