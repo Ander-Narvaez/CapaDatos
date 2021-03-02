@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\ClsConexion.cs" />
+    <Compile Include="Clases\ClsEmpleados.cs" />
     <Compile Include="Clases\ClsMedicos.cs" />
+    <Compile Include="Clases\ClsPacientes.cs" />
     <Compile Include="Clases\ClsPersonas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
