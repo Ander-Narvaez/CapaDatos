@@ -23,9 +23,9 @@ namespace CapaDatos.Clases
             this.aMedico  = "";
         }
 
-        public ClsHorarios(string paCodigoH, String pDia, String pJornada, String pMedico)
+        public ClsHorarios(string pCodigoH, String pDia, String pJornada, String pMedico)
         {
-            this.aCodigoH = paCodigoH;
+            this.aCodigoH = pCodigoH;
             this.aDia     = pDia;
             this.aJornada = pJornada;
             this.aMedico  = pMedico;
