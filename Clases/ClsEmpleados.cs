@@ -25,7 +25,7 @@ namespace CapaDatos.Clases
             this.aPuesto_Empleado = pPuesto_Empleado;
         }
 
-        public String MantenimientoMedicos(ClsEmpleados pClsempleado, String pAccion)
+        public String MantenimientoEmpleados(ClsEmpleados pClsempleado, String pAccion)
         {
             String vResultado = "";
             if (this.Conectando())
@@ -37,7 +37,7 @@ namespace CapaDatos.Clases
                     SqlCommand coneccion = new SqlCommand();
                     coneccion.Connection = conectado;
                     coneccion.CommandType = CommandType.StoredProcedure;
-                    coneccion.CommandText = "stp_MantenimientoMedicos";
+                    coneccion.CommandText = "Stp_MantenimientoEmpleados";
                     coneccion.CommandTimeout = 10;
                     coneccion.Parameters.AddWithValue("@pNif_Empleado", pClsempleado.aNif_Empleado);
                     coneccion.Parameters.AddWithValue("@pPuesto_Empleado", pClsempleado.aPuesto_Empleado);
@@ -56,7 +56,7 @@ namespace CapaDatos.Clases
         }
 
         private DataSet dataTable = new DataSet();
-        public DataSet GetListaMedicos(ClsEmpleados pClsempleado, String pAccion)
+        public DataSet GetListaEmpleados(ClsEmpleados pClsempleado, String pAccion)
         {
             try
             {
