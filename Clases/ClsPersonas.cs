@@ -70,15 +70,15 @@ namespace CapaDatos.Clases
                     coneccion.Parameters.AddWithValue("@pAccion", pAccion);
                     coneccion.ExecuteNonQuery();
                     conectado.Close();
-                    vResultado = "Ejecutado con exito";
-
+                    vResultado = "Se Inserto Correctamente";
                 }
                 catch (Exception Ex)
                 {
-                    vResultado = Ex.Message;
+                    vResultado = "Error al insertar dato por: " + Ex.Message;
+                    Console.WriteLine(Ex.Message);
                 }
             }
-            return vResultado;
+            return vResultado; 
         }
 
         private DataSet dataTable = new DataSet();
